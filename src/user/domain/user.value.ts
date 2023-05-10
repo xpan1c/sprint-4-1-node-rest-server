@@ -2,10 +2,10 @@ import { UserEntity } from "./user.entity";
 
 export class UserValue implements UserEntity {
 	name;
-	birthDay;
-	constructor({ name, birthDay }: { name: string | null; birthDay: Date | null }) {
+	age;
+	constructor({ name, age }: { name: string; age: number }) {
 		this.name = name;
-		this.birthDay = birthDay;
+		this.age = age;
 	}
 
 	sayHello(): string {

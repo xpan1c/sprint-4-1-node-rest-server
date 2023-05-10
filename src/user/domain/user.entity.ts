@@ -1,4 +1,4 @@
 export interface UserEntity {
-	name: string | null;
-	birthDay: Date | null;
+	name: string;
+	age: number;
 }

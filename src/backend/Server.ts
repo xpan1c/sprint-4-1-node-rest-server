@@ -3,6 +3,8 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 
+import { route } from "../user/infrastructure/route/user.route";
+
 export class Server {
 	private readonly express: express.Express;
 	private readonly port: string;
@@ -14,6 +16,7 @@ export class Server {
 		this.express.use(cors());
 		this.express.use(json());
 		this.express.use(urlencoded({ extended: true }));
+		this.express.use(route);
 	}
 
 	async listen(): Promise<void> {
