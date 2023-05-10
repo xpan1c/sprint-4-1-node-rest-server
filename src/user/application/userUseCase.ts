@@ -1,8 +1,6 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 
 import { UserEntity } from "../domain/user.entity";
-
-dotenv.config();
 
 export class UserUseCase {
 	userinfo = (): UserEntity => {
@@ -15,7 +13,7 @@ export class UserUseCase {
 		return { name, age };
 	};
 
-	calculateAge = (birthDate: Date): number => {
+	private readonly calculateAge = (birthDate: Date): number => {
 		const today = new Date();
 		let age = today.getFullYear() - birthDate.getFullYear();
 		const m = today.getMonth() - birthDate.getMonth();
