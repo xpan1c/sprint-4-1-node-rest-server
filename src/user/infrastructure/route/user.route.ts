@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import { UserUseCase } from "../../application/userUseCase";
+import { UserInformation } from "../../application/UserInformation";
 import { UserController } from "../controller/user.ctrl";
 
 export const route = Router();
 
-const userUseCase = new UserUseCase();
+const userInformation = new UserInformation();
 
-const userCtrl = new UserController(userUseCase);
+const userCtrl = new UserController(userInformation);
 
 route.get(`/user`, userCtrl.getUserInfo.bind(userCtrl));
