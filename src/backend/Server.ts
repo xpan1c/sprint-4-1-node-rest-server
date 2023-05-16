@@ -1,9 +1,11 @@
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
-import express from "express";
+import errorHandler from "errorhandler";
+import express, { Request, Response, Router } from "express";
 import helmet from "helmet";
 
-import { router } from "./routes";
+import { HttpStatus } from "../shared/domain/HttpStatus";
+import { registerRoutes } from "./routes";
 
 export class Server {
 	private readonly express: express.Express;
@@ -16,7 +18,14 @@ export class Server {
 		this.express.use(cors());
 		this.express.use(json());
 		this.express.use(urlencoded({ extended: true }));
+		const router = Router();
 		this.express.use(router);
+		router.use(errorHandler());
+		registerRoutes(router);
+		router.use((err: Error, req: Request, res: Response, _next: () => void) => {
+			console.log(err);
+			res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+		});
 	}
 
 	async listen(): Promise<void> {

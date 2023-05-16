@@ -3,13 +3,13 @@ import { Request, Response } from "express";
 import { HttpResponse } from "../../../shared/infrastructure/response/HttpResponse";
 import { UserInformation } from "../../application/UserInformation";
 
-export class UserController {
+export class GetUserInfoController {
 	constructor(
 		private readonly userCase: UserInformation,
 		private readonly httpResponse: HttpResponse
 	) {}
 
-	public getUserInfo(req: Request, res: Response): void {
+	run(req: Request, res: Response): void {
 		try {
 			const data: { name: string; age: number; hostUrl?: string } = this.userCase.getUserInfo();
 			const fullUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}`;

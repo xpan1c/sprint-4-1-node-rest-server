@@ -6,8 +6,7 @@ import { multerMiddleware } from "../../storage/infrastructure/middleware/multer
 
 export const router = Router();
 
-const httpResponse = new HttpResponse();
-
-const userCtrl = new StorageController(httpResponse);
-
-router.post(`/update`, multerMiddleware.single("myfile"), userCtrl.getFile.bind(userCtrl));
+export const register = (router: Router): void => {
+	const userCtrl = new StorageController(new HttpResponse());
+	router.post(`/upload`, multerMiddleware.single("myfile"), userCtrl.getFile.bind(userCtrl));
+};
