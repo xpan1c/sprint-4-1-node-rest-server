@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { HttpResponse } from "../../../backend/shared/response/HttpResponse";
+import { HttpResponse } from "../../../shared/infrastructure/response/HttpResponse";
 import { UserInformation } from "../../application/UserInformation";
 
 export class UserController {
@@ -11,9 +11,9 @@ export class UserController {
 
 	public getUserInfo(req: Request, res: Response): void {
 		try {
-			const data: { name: string; age: number; fullUrl?: string } = this.userCase.getUserInfo();
+			const data: { name: string; age: number; hostUrl?: string } = this.userCase.getUserInfo();
 			const fullUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
-			data.fullUrl = fullUrl;
+			data.hostUrl = fullUrl;
 			this.httpResponse.Ok(res, data);
 		} catch (error) {
 			if (error instanceof Error) {

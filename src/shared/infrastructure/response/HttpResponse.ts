@@ -1,6 +1,6 @@
 import { Response } from "express";
 
-import { HttpStatus } from "./HttpStatus";
+import { HttpStatus } from "../../domain/HttpStatus";
 
 export class HttpResponse {
 	Ok(res: Response, data?: unknown): Response {
