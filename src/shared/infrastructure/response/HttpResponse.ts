@@ -11,6 +11,14 @@ export class HttpResponse {
 		});
 	}
 
+	BadRequest(res: Response, data?: unknown): Response {
+		return res.status(HttpStatus.BAD_REQUEST).json({
+			status: HttpStatus.BAD_REQUEST,
+			statusMsg: "Bad Request",
+			error: data,
+		});
+	}
+
 	NotFound(res: Response, data?: unknown): Response {
 		return res.status(HttpStatus.NOT_FOUND).json({
 			status: HttpStatus.NOT_FOUND,

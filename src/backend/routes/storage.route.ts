@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { HttpResponse } from "../../shared/infrastructure/response/HttpResponse";
 import { StorageController } from "../../storage/infrastructure/controller/StorageController";
-import { multerMiddleware } from "../../storage/infrastructure/middleware/multerMiddle";
+import { multerMiddleware } from "../middleware/multerMiddle";
 
 export const router = Router();
 

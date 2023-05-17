@@ -12,6 +12,12 @@ export class StorageController {
 				fileName: `${file?.filename}`,
 				path: `${file?.path}`,
 			};
+			if (!file) {
+				this.httpResponse.BadRequest(
+					res,
+					"File upload only supports the following filetypes - jpeg|jpg|png|gif"
+				);
+			}
 			this.httpResponse.Ok(res, dataToRegister);
 		} catch (error) {
 			if (error instanceof Error) {

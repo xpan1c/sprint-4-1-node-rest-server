@@ -1,10 +1,9 @@
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
-import errorHandler from "errorhandler";
 import express, { Request, Response, Router } from "express";
 import helmet from "helmet";
 
-import { HttpStatus } from "../shared/domain/HttpStatus";
+import { HttpResponse } from "../shared/infrastructure/response/HttpResponse";
 import { registerRoutes } from "./routes";
 
 export class Server {
@@ -20,11 +19,11 @@ export class Server {
 		this.express.use(urlencoded({ extended: true }));
 		const router = Router();
 		this.express.use(router);
-		router.use(errorHandler());
 		registerRoutes(router);
 		router.use((err: Error, req: Request, res: Response, _next: () => void) => {
+			// eslint-disable-next-line no-console
 			console.log(err);
-			res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+			new HttpResponse().Error(res, err.message);
 		});
 	}
 
