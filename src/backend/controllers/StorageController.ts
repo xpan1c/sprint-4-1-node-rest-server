@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 
-import { HttpResponse } from "../../../shared/infrastructure/response/HttpResponse";
+import { HttpResponse } from "../../shared/infrastructure/response/HttpResponse";
 
 export class StorageController {
 	constructor(private readonly httpResponse: HttpResponse) {}
 
-	public getFile(req: Request, res: Response): void {
+	run(req: Request, res: Response): void {
 		try {
 			const { file } = req;
 			const dataToRegister: { fileName: string; path: string } = {

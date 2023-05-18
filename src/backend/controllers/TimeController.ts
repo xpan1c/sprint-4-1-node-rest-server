@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
-import { HttpResponse } from "../../../shared/infrastructure/response/HttpResponse";
+import { HttpResponse } from "../../shared/infrastructure/response/HttpResponse";
 
-export class GetTimeController {
+export class TimeController {
 	constructor(private readonly httpResponse: HttpResponse) {}
 
 	run(req: Request, res: Response): void {
