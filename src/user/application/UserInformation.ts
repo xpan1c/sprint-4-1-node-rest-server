@@ -3,7 +3,7 @@ import "dotenv/config";
 import { User } from "../domain/User";
 
 export class UserInformation {
-	getUserInfo = (): { name: string; age: number } => {
+	getUserInfo = (): { name: string; age: number; pass: string } => {
 		const name = process.env.USER_NAME;
 		if (!name) {
 			throw new Error("Name is not defined");
@@ -15,9 +15,13 @@ export class UserInformation {
 		) {
 			throw new Error(`Data does not match, the format is "yyyy-mm-dd"`);
 		}
+		const pass = process.env.USER_PASSWORD;
+		if (!pass) {
+			throw new Error("Name is not defined");
+		}
 		const user = User.create(name, birthDayString);
 		const age = user.getAge();
 
-		return { name, age };
+		return { name, age, pass };
 	};
 }
