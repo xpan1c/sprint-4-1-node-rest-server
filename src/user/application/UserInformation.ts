@@ -1,9 +1,10 @@
 import "dotenv/config";
 
 import { User } from "../domain/User";
+import { UserType } from "../domain/UserType";
 
 export class UserInformation {
-	getUserInfo = (): { name: string; age: number; pass: string } => {
+	getUserInfo = (): UserType => {
 		const name = process.env.USER_NAME;
 		if (!name) {
 			throw new Error("Name is not defined");

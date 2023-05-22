@@ -1,10 +1,10 @@
-# 🦋 TypeScript TDD Template
+# 🚀 Sprint-4-1-Node-Rest-Server
 
-⚡ Start your Node.js project with Typescript using Test Driven Development (TDD) practices.
+⚡ "Learning to build a server that exposes a REST API.
 
 ### 📋 GitHub Actions Workflow:
 
-[![🏠 Build](https://github.com/AraManjon/typescript-tdd-template/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/AraManjon/typescript-tdd-template/actions/workflows/build.yml)
+[![🏠 Build](https://github.com/xpan1c/sprint-4-1-node-rest-server/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/xpan1c/sprint-4-1-node-rest-server/actions/workflows/build.yml)
 
 This GitHub Actions workflow automatically builds and tests the application when code changes are pushed to the master branch or a pull request targeting the master branch is opened or synchronized.
 
@@ -13,7 +13,7 @@ This GitHub Actions workflow automatically builds and tests the application when
 To get started with this template, you first need to clone the repository:
 
 ```bash
-git clone https://github.com/AraManjon/typescript-tdd-template.git
+git clone https://github.com/xpan1c/sprint-4-1-node-rest-server.git
 ```
 
 Then, install the project dependencies:
@@ -78,8 +78,10 @@ This project comes with several predefined scripts in the package.json file:
 - helmet: middleware for adding security headers
 
 - mongodb: driver for MongoDB
+- 
+- glob: file matching pattern library
 
-- mysql2: MySQL client for Node.js
+- multer: middleware for handling 'multipart/form-data', primarily used for uploading files
 
 ### 🛠️ Dev Dependencies
 
@@ -89,7 +91,7 @@ This project comes with several predefined scripts in the package.json file:
 
 - @types/jest: TypeScript definitions for jest
 
-- @types/mysql: TypeScript definitions for mysql
+- @types/multer: TypeScript definitions for multer
 
 - eslint: linter for TypeScript
 
@@ -105,37 +107,10 @@ This project comes with several predefined scripts in the package.json file:
 
 - tsc-watch: TypeScript compiler with file watching
 
-### 🗂️ Folder structure
+## Adding Routes
 
-In this folder structure, the code is organized according to the principles of Hexagonal Architecture. 
+The application uses a dynamic approach to register routes by utilizing the `glob` and `path` modules. The `registerRoutes` function in the `index.ts` file scans the directory for route modules and registers them automatically.
 
-```
-src/
-├── backend
-│   ├── middlewares
-│   ├── App.ts
-│   ├── server.start.ts
-│   └── Server.ts
-├── shared
-│   ├── utils
-│   ├── domain
-│   └── infrastructure
-│       ├── config
-│       └── persistence
-└── user
-    ├── application
-    │   ├── services
-    │   └── use-cases
-    ├── domain
-    │   ├── entities
-    │   └── repositories
-    └── infrastructure
-        ├── controllers
-        ├── repositories
-        ├── routes
-        ├── services
-        └── UserModule.ts
-```
+## Documentation
 
-
-
+You can find the API documentation [here](https://documenter.getpostman.com/view/23686333/2s93m33P3v). It provides detailed information about the available endpoints and how to interact with them.

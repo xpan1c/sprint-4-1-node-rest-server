@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import { HttpResponse } from "../../../shared/infrastructure/response/HttpResponse";
-import { UserInformation } from "../../application/UserInformation";
+import { HttpResponse } from "../../shared/infrastructure/response/HttpResponse";
+import { UserInformation } from "../../user/application/UserInformation";
 
-export class GetUserInfoController {
+export class UserInfoController {
 	constructor(
 		private readonly userCase: UserInformation,
 		private readonly httpResponse: HttpResponse

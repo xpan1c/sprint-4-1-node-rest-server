@@ -10,7 +10,7 @@ export const basicAuthMiddleware = (req: Request, res: Response, next: NextFunct
 		const token = authHeader.split(" ")[1];
 		const [username, password] = Buffer.from(token, "base64").toString("utf-8").split(":");
 		const { name, pass } = new UserInformation().getUserInfo();
-		// Reemplaza 'admin' y 'supersecret' con tus propios usuarios y contraseñas
+
 		if (username === name && password === pass) {
 			next();
 
