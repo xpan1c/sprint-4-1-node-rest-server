@@ -7,6 +7,12 @@ export class PokemonController {
 
 	run(req: Request, res: Response): void {
 		const { id } = req.params;
+		const intId = parseInt(id, 10);
+		if (isNaN(intId) || intId < 1 || intId > 1010) {
+			this.httpResponse.BadRequest(res, "Invalid Pokemon ID");
+
+			return;
+		}
 		fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
 			.then((response) => response.json())
 			.then(({ name, height, weight }) => {

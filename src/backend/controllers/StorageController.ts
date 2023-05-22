@@ -17,6 +17,8 @@ export class StorageController {
 					res,
 					"File upload only supports the following filetypes - jpeg|jpg|png|gif"
 				);
+
+				return;
 			}
 			this.httpResponse.Ok(res, dataToRegister);
 		} catch (error) {
