@@ -25,6 +25,11 @@ export class Server {
 			console.log(err);
 			new HttpResponse().Error(res, err.message);
 		});
+		this.express.use((err: Error, req: Request, res: Response, _next: () => void) => {
+			// eslint-disable-next-line no-console
+			console.log(err);
+			new HttpResponse().Error(res, err.message);
+		});
 	}
 
 	async listen(): Promise<void> {
